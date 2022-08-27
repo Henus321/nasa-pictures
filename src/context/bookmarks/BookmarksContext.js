@@ -3,9 +3,14 @@ import bookmarksReducer from './BookmarksReducer';
 
 const BookmarksContext = createContext();
 
+const getInitialState = () => {
+  const bookmarks = localStorage.getItem('bookmarks');
+  return bookmarks ? JSON.parse(bookmarks) : [];
+};
+
 export const BookmarksProvider = ({ children }) => {
   const initialState = {
-    bookmarks: [],
+    bookmarks: getInitialState(),
   };
 
   const [state, dispatch] = useReducer(bookmarksReducer, initialState);
