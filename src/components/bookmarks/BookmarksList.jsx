@@ -12,7 +12,7 @@ const BookmarksList = () => {
   });
 
   return (
-    <div className="container flex flex-col w-1/3 bg-yellow-200">
+    <div className="container flex w-full bg-yellow-200">
       {bookmarks.length > 0 ? (
         bookmarks.map((bookmark) => (
           <BookmarksItem bookmark={bookmark} key={uuidv4()} />
