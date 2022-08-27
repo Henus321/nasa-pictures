@@ -5,6 +5,8 @@ const nasaReducer = (state, action) => {
         ...state,
         pictureOfTheDay: action.payload,
       };
+    default:
+      return state;
   }
 };
 

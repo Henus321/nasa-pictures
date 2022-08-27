@@ -6,6 +6,7 @@ import App from './App';
 
 import { DateProvider } from './context/date/DateContext';
 import { NasaProvider } from './context/nasa/NasaContext';
+import { BookmarksProvider } from './context/bookmarks/BookmarksContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -13,7 +14,9 @@ root.render(
     <BrowserRouter>
       <DateProvider>
         <NasaProvider>
-          <App />
+          <BookmarksProvider>
+            <App />
+          </BookmarksProvider>
         </NasaProvider>
       </DateProvider>
     </BrowserRouter>
