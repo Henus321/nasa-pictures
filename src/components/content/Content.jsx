@@ -19,11 +19,9 @@ const Content = () => {
     setAPODData();
   }, [formatedDate, dispatchNasa]);
 
-  // console.log(pictureOfTheDay);
-
   return (
-    <div className="container flex flex-col w-full mt-4 md:flex-row">
-      <div className="flex flex-col w-full md:w-1/2">
+    <div className="container flex flex-col w-full mt-0 lg:mt-4 lg:flex-row">
+      <div className="flex flex-col w-full px-4 lg:px-0 lg:w-1/2">
         {pictureOfTheDay ? (
           <div className="flex flex-col w-full h-full p-4 bg-white rounded-xl">
             <img src={pictureOfTheDay.url} alt={pictureOfTheDay.title} />
@@ -32,8 +30,8 @@ const Content = () => {
           <h2>Loading...</h2>
         )}
       </div>
-      <div className="relative flex flex-col w-full text-white overflow-auto rounded-2xl md:w-1/2">
-        <div className=" py-4 px-6 text-justify md:absolute">
+      <div className="relative flex flex-col w-full text-white overflow-auto rounded-2xl lg:w-1/2">
+        <div className=" py-4 px-6 text-justify lg:absolute">
           <h2 className="text-2xl font-semibold">{pictureOfTheDay.title}</h2>
           <p>{pictureOfTheDay.explanation}</p>
         </div>
