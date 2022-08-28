@@ -1,8 +1,9 @@
-import { useEffect, useContext } from 'react';
+import { useEffect, useContext, useRef } from 'react';
 import { formatDate } from '../../context/date/DateActions';
 import DateContext from '../../context/date/DateContext';
 import NasaContext from '../../context/nasa/NasaContext';
 import { fetchAPOD } from '../../context/nasa/NasaActions';
+import YouTube from 'react-youtube';
 
 const Content = () => {
   const { date } = useContext(DateContext);
@@ -24,7 +25,14 @@ const Content = () => {
       <div className="flex flex-col w-full px-4 lg:px-0 lg:w-1/2">
         {pictureOfTheDay ? (
           <div className="flex flex-col w-full h-full p-4 bg-white rounded-xl">
-            <img src={pictureOfTheDay.url} alt={pictureOfTheDay.title} />
+            {pictureOfTheDay.media_type === 'video' ? (
+              <YouTube
+                className="flex justify-center items-center"
+                videoId={pictureOfTheDay.videoId}
+              ></YouTube>
+            ) : (
+              <img src={pictureOfTheDay.url} alt={pictureOfTheDay.title} />
+            )}
           </div>
         ) : (
           <h2>Loading...</h2>

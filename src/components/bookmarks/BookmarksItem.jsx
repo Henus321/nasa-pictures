@@ -5,16 +5,18 @@ import DateContext from '../../context/date/DateContext';
 const BookmarksItem = ({ bookmark }) => {
   const { dispatch: dispatchBookmark } = useContext(BookmarksContext);
   const { dispatch: dispatchDate } = useContext(DateContext);
-  const { date, url } = bookmark;
 
   const deleteBookmark = () => {
     dispatchBookmark({ type: 'DELETE_BOOKMARK', payload: bookmark });
   };
 
-  const onBookmarkClick = (bookmarkDate) => {
-    const date = new Date(bookmarkDate);
+  const onBookmarkClick = (bookmark) => {
+    const date = new Date(bookmark.date);
     dispatchDate({ type: 'SET_DATE', payload: date });
   };
+
+  const chooseThumbnail = (bookmark) =>
+    bookmark.media_type === 'video' ? bookmark.thumbnail : bookmark.url;
 
   return (
     <div className="relative flex flex-col min-w-max mx-2 bg-white rounded-lg">
@@ -26,9 +28,9 @@ const BookmarksItem = ({ bookmark }) => {
       </button>
       <img
         className="w-20 h-20 object-cover p-2 cursor-pointer"
-        src={url}
-        alt={date}
-        onClick={() => onBookmarkClick(date)}
+        src={chooseThumbnail(bookmark)}
+        alt={bookmark.date}
+        onClick={() => onBookmarkClick(bookmark)}
       />
     </div>
   );

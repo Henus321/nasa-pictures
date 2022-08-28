@@ -99,7 +99,7 @@ const Control = () => {
         />
         <button
           onClick={() => incrementDateHandler(date)}
-          className="bg-white py-3 px-5 self-center m-3 transition rounded-xl enabled:hover:text-white enabled:hover:bg-blue-800 enabled:active:rounded enabled:active:bg-blue-900 disabled:opacity-75"
+          className="bg-white py-3 px-5 self-center m-3 transition rounded-xl enabled:hover:text-white enabled:hover:bg-blue-800 enabled:active:rounded enabled:active:bg-blue-900 disabled:opacity-50"
           disabled={isCurDayToday()}
         >
           Forth

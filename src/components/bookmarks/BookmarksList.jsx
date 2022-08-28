@@ -15,14 +15,17 @@ const BookmarksList = () => {
   });
 
   const scroll = (scrollOffset) => {
-    console.log(1);
     containerEl.current.scrollLeft += scrollOffset;
   };
 
   return (
     <div className="relative container flex mb-10 px-4 lg:px-0">
       <button
-        className="my-4 p-1 rounded-lg bg-white hover:text-white hover:bg-blue-800 active:rounded active:bg-blue-900"
+        className={
+          bookmarks.length > 0
+            ? 'my-4 p-1 rounded-lg h-20 bg-white hover:text-white hover:bg-blue-800 active:rounded active:bg-blue-900'
+            : 'my-4 p-1 rounded-lg h-20 bg-white opacity-50 cursor-auto'
+        }
         onClick={() => scroll(-100)}
       >
         <FaChevronLeft />
@@ -36,11 +39,15 @@ const BookmarksList = () => {
             <BookmarksItem bookmark={bookmark} key={uuidv4()} />
           ))
         ) : (
-          <div>No items...</div>
+          <div className="text-white m-auto self-center">No Bookmarks...</div>
         )}
       </div>
       <button
-        className="my-4 p-1 rounded-lg bg-white hover:text-white hover:bg-blue-800 active:rounded active:bg-blue-900"
+        className={
+          bookmarks.length > 0
+            ? 'my-4 p-1 rounded-lg h-20 bg-white hover:text-white hover:bg-blue-800 active:rounded active:bg-blue-900'
+            : 'my-4 p-1 rounded-lg h-20 bg-white opacity-50 cursor-auto'
+        }
         onClick={() => scroll(100)}
       >
         <FaChevronRight />
