@@ -8,7 +8,9 @@ const Header = () => {
         <Link to="/" className="text-2xl hover:scale-110 active:scale-100">
           Home
         </Link>
-        <img className="w-20 h-20" src={logo} alt="Logo" />
+        <a href="https://www.nasa.gov/" rel="noreferrer" target="_blank">
+          <img className="w-20 h-20" src={logo} alt="Logo" />
+        </a>
         <Link to="/about" className="text-2xl hover:scale-110 active:scale-100">
           About
         </Link>

@@ -67,6 +67,10 @@ const Control = () => {
     dispatchBookmarks({ type: 'ADD_TO_BOOKMARKS', payload: pictureOfTheDay });
   };
 
+  const deleteBookmark = () => {
+    dispatchBookmarks({ type: 'DELETE_BOOKMARK', payload: pictureOfTheDay });
+  };
+
   const isAPODBookmarked = () => {
     const isBookmarked = bookmarks.filter(
       (bookmark) => bookmark.date === pictureOfTheDay.date
@@ -80,10 +84,10 @@ const Control = () => {
       <div className="flex justify-center">
         <button
           onClick={() => decrementDateHandler(date)}
-          className="bg-white py-3 px-5 self-center m-3 transition rounded-xl hover:text-white hover:bg-blue-800 active:rounded active:bg-blue-900"
+          className="bg-white py-3 px-5 self-center m-3 transition rounded-xl enabled:hover:text-white enabled:hover:bg-blue-800 enabled:active:rounded enabled:active:bg-blue-900 disabled:opacity-75"
           disabled={isFirstAPOD()}
         >
-          Prev
+          Back
         </button>
         <input
           className="bg-white py-2 px-4 my-3 mx-4 border-2 rounded-xl"
@@ -95,22 +99,17 @@ const Control = () => {
         />
         <button
           onClick={() => incrementDateHandler(date)}
-          className="bg-white py-3 px-5 self-center m-3 transition rounded-xl hover:text-white hover:bg-blue-800 active:rounded active:bg-blue-900"
+          className="bg-white py-3 px-5 self-center m-3 transition rounded-xl enabled:hover:text-white enabled:hover:bg-blue-800 enabled:active:rounded enabled:active:bg-blue-900 disabled:opacity-75"
           disabled={isCurDayToday()}
         >
-          Next
+          Forth
         </button>
       </div>
       <button
-        className={
-          isAPODBookmarked()
-            ? 'bg-gray-300 text-slate-500 py-3 px-5 self-center mt-3 transition rounded-xl hover:text-white hover:bg-blue-800 active:rounded active:bg-blue-900'
-            : 'bg-white py-3 px-5 self-center mt-3 transition rounded-xl hover:text-white hover:bg-blue-800 active:rounded active:bg-blue-900'
-        }
-        onClick={addToBookmarksHandler}
-        disabled={isAPODBookmarked()}
+        className="bg-white py-3 px-5 self-center mt-3 transition rounded-xl hover:text-white hover:bg-blue-800 active:rounded active:bg-blue-900"
+        onClick={isAPODBookmarked() ? deleteBookmark : addToBookmarksHandler}
       >
-        {isAPODBookmarked() ? 'Bookmarked' : 'Add To Bookmarks'}
+        {isAPODBookmarked() ? 'Delete Bookmark' : 'Add to Bookmarks'}
       </button>
     </div>
   );

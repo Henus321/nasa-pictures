@@ -8,6 +8,7 @@ const BookmarksItem = ({ bookmark }) => {
   const deleteBookmark = () => {
     dispatch({ type: 'DELETE_BOOKMARK', payload: bookmark });
   };
+
   return (
     <div className="relative flex flex-col min-w-max mx-2 bg-white rounded-lg">
       <button
