@@ -22,7 +22,7 @@ const BookmarksList = () => {
   return (
     <div className="relative container flex mb-10">
       <button
-        className="my-4 p-1 rounded-lg bg-white"
+        className="my-4 p-1 rounded-lg bg-white hover:text-white hover:bg-blue-800 active:rounded active:bg-blue-900"
         onClick={() => scroll(-100)}
       >
         <FaChevronLeft />
@@ -40,7 +40,7 @@ const BookmarksList = () => {
         )}
       </div>
       <button
-        className="my-4 p-1 rounded-lg bg-white"
+        className="my-4 p-1 rounded-lg bg-white hover:text-white hover:bg-blue-800 active:rounded active:bg-blue-900"
         onClick={() => scroll(100)}
       >
         <FaChevronRight />
