@@ -20,6 +20,11 @@ const dateReducer = (state, action) => {
         ...state,
         date: action.payload,
       };
+    case 'SET_DATE':
+      return {
+        ...state,
+        date: action.payload,
+      };
     default:
       return state;
   }
