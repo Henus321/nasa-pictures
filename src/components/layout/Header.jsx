@@ -3,13 +3,13 @@ import logo from '../assets/logo.png';
 
 const Header = () => {
   return (
-    <nav className="relative container mx-auto px-4 py-2 bg-red-300">
+    <nav className="relative container text-white mx-auto px-4 py-2">
       <div className="flex items-center justify-around">
-        <Link to="/" className="text-2xl hover:text-red-100">
+        <Link to="/" className="text-2xl hover:scale-110 active:scale-100">
           Home
         </Link>
-        <img src={logo} alt="Logo" />
-        <Link to="/about" className="text-2xl hover:text-red-100">
+        <img className="w-20 h-20" src={logo} alt="Logo" />
+        <Link to="/about" className="text-2xl hover:scale-110 active:scale-100">
           About
         </Link>
       </div>

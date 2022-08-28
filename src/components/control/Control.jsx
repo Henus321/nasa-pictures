@@ -75,18 +75,18 @@ const Control = () => {
   };
 
   return (
-    <div className="flex flex-col w-full">
-      <h1 className="bg-red-100 text-center">Select Date: </h1>
-      <div className="flex justify-around">
+    <div className="flex flex-col w-full py-3">
+      <h1 className="text-center text-white text-xl">Pick a date:</h1>
+      <div className="flex justify-center">
         <button
           onClick={() => decrementDateHandler(date)}
-          className="py-1 px-4 bg-emerald-200"
+          className="bg-white py-3 px-5 self-center m-3 transition rounded-xl hover:text-white hover:bg-blue-800 active:rounded active:bg-blue-900"
           disabled={isFirstAPOD()}
         >
           Prev
         </button>
         <input
-          className="py-2 px-4 border-2 border-sky-500"
+          className="bg-white py-2 px-4 my-3 mx-4 border-2 rounded-xl"
           type="date"
           onChange={(e) => pickDateHandler(e.target.valueAsDate)}
           min={formatedFirstAPODDate}
@@ -95,14 +95,18 @@ const Control = () => {
         />
         <button
           onClick={() => incrementDateHandler(date)}
-          className="py-1 px-4 bg-emerald-200"
+          className="bg-white py-3 px-5 self-center m-3 transition rounded-xl hover:text-white hover:bg-blue-800 active:rounded active:bg-blue-900"
           disabled={isCurDayToday()}
         >
           Next
         </button>
       </div>
       <button
-        className={isAPODBookmarked() ? 'bg-rose-400' : 'bg-cyan-200'}
+        className={
+          isAPODBookmarked()
+            ? 'bg-gray-300 text-slate-500 py-3 px-5 self-center mt-3 transition rounded-xl hover:text-white hover:bg-blue-800 active:rounded active:bg-blue-900'
+            : 'bg-white py-3 px-5 self-center mt-3 transition rounded-xl hover:text-white hover:bg-blue-800 active:rounded active:bg-blue-900'
+        }
         onClick={addToBookmarksHandler}
         disabled={isAPODBookmarked()}
       >

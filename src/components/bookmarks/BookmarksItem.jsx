@@ -9,15 +9,14 @@ const BookmarksItem = ({ bookmark }) => {
     dispatch({ type: 'DELETE_BOOKMARK', payload: bookmark });
   };
   return (
-    <div className="relative flex flex-col">
+    <div className="relative flex flex-col min-w-max mx-2 bg-white rounded-lg">
       <button
-        className="absolute top-0 right-0 py-0.5 px-1 bg-white"
+        className="absolute font-bold top-0 right-0 px-1 bg-white rounded-lg"
         onClick={deleteBookmark}
       >
         x
       </button>
-      <img className="w-full h-20" src={url} alt={date} />
-      <span>{date}</span>
+      <img className="w-20 h-20 object-cover p-2" src={url} alt={date} />
     </div>
   );
 };
