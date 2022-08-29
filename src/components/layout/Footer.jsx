@@ -6,7 +6,7 @@ const Footer = () => {
     <div className="w-full flex flex-col text-center bg-whiteTransparent">
       <div className="container flex flex-col w-full justify-around items-center p-8 mt-4 mx-auto md:space-y-4 md:flex-row">
         <div className="flex flex-col flex-1">
-          <h2 className="text-2xl font-bold px-8 md:py-4">NASA APOD</h2>
+          <h2 className="text-2xl font-bold px-8 md:py-2">NASA PICTURES</h2>
           <p className="hidden mx-auto md:flex">Developed by Alexandr Erkhov</p>
         </div>
         <div className="flex flex-col justify-center flex-1">
