@@ -1,8 +1,8 @@
-import React, { useContext, useEffect } from 'react';
+import React, { memo, useContext } from 'react';
 import DatePicker from 'react-datepicker';
 import DateContext from '../../context/date/DateContext';
 
-const CustomDatePicker = () => {
+const CustomDatePicker = memo(() => {
   const {
     date,
     today,
@@ -31,9 +31,10 @@ const CustomDatePicker = () => {
       onChange={(date) => pickDateHandler(date)}
       minDate={firstAPODDate}
       maxDate={today}
+      dateFormat="dd/MM/yyyy"
       customInput={<CustomInput />}
     />
   );
-};
+});
 
 export default CustomDatePicker;
