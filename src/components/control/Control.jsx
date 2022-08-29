@@ -30,7 +30,7 @@ const Control = () => {
     const currentDate = getCurrentDate();
     if (!today) {
       dispatchDate({ type: 'GET_TODAY', payload: currentDate });
-      setFormatedTodayDate(currentDate);
+      setFormatedTodayDate(formatDate(currentDate));
     }
     dispatchDate({ type: 'GET_CURRENT_DATE', payload: currentDate });
   }, [dispatchDate, today]);
