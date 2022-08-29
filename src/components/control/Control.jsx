@@ -10,7 +10,7 @@ import DateContext from '../../context/date/DateContext';
 import NasaContext from '../../context/nasa/NasaContext';
 
 import 'react-datepicker/dist/react-datepicker.css';
-import CustomDatePicker from '../custom-date-picker/CustomDatePicker';
+import CustomDatePicker from './CustomDatePicker';
 
 const Control = () => {
   const [formatedTodayDate, setFormatedTodayDate] = useState('');
@@ -33,9 +33,7 @@ const Control = () => {
       setFormatedTodayDate(currentDate);
     }
     dispatchDate({ type: 'GET_CURRENT_DATE', payload: currentDate });
-  }, [dispatchDate]);
-
-  console.log(123);
+  }, [dispatchDate, today]);
 
   const incrementDateHandler = (curDate) => {
     const nextDay = incrementDate(curDate);
