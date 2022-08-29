@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import BookmarksContext from '../../context/bookmarks/BookmarksContext';
 import {
   decrementDate,
@@ -9,40 +9,33 @@ import {
 import DateContext from '../../context/date/DateContext';
 import NasaContext from '../../context/nasa/NasaContext';
 
-import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import CustomDatePicker from '../custom-date-picker/CustomDatePicker';
 
 const Control = () => {
-  const CustomInput = React.forwardRef(({ value, onClick }, ref) => (
-    <button
-      className="px-4 py-3 mx-4 my-3 self-center bg-whiteTransparent rounded-xl enabled:hover:text-white enabled:hover:bg-blue-800 enabled:active:rounded enabled:active:bg-blue-900 disabled:opacity-60"
-      onClick={onClick}
-      ref={ref}
-    >
-      {value}
-    </button>
-  ));
-
   const [formatedTodayDate, setFormatedTodayDate] = useState('');
-  const [todayDate, setTodayDate] = useState('');
-  const { date, dispatch: dispatchDate } = useContext(DateContext);
+  const {
+    date,
+    today,
+    formatedFirstAPODDate,
+    dispatch: dispatchDate,
+  } = useContext(DateContext);
   const { pictureOfTheDay } = useContext(NasaContext);
   const { bookmarks, dispatch: dispatchBookmarks } =
     useContext(BookmarksContext);
 
   const formatedDate = date && formatDate(date);
-  const formatedFirstAPODDate = '1995-06-20';
-  const firstAPODDate = new Date(formatedFirstAPODDate);
-
-  if (!todayDate && date) {
-    setTodayDate(date);
-    setFormatedTodayDate(formatedDate);
-  }
 
   useEffect(() => {
     const currentDate = getCurrentDate();
+    if (!today) {
+      dispatchDate({ type: 'GET_TODAY', payload: currentDate });
+      setFormatedTodayDate(currentDate);
+    }
     dispatchDate({ type: 'GET_CURRENT_DATE', payload: currentDate });
   }, [dispatchDate]);
+
+  console.log(123);
 
   const incrementDateHandler = (curDate) => {
     const nextDay = incrementDate(curDate);
@@ -52,12 +45,6 @@ const Control = () => {
   const decrementDateHandler = (curDate) => {
     const prevDay = decrementDate(curDate);
     dispatchDate({ type: 'DECREMENT_DATE', payload: prevDay });
-  };
-
-  const pickDateHandler = (inputPick) => {
-    if (!inputPick) return;
-
-    dispatchDate({ type: 'PICK_DATE', payload: inputPick });
   };
 
   const isCurDayToday = () => formatedTodayDate === formatedDate;
@@ -90,13 +77,7 @@ const Control = () => {
         >
           Back
         </button>
-        <DatePicker
-          selected={date}
-          onChange={(date) => pickDateHandler(date)}
-          minDate={firstAPODDate}
-          maxDate={todayDate}
-          customInput={<CustomInput />}
-        />
+        <CustomDatePicker />
         <button
           onClick={() => incrementDateHandler(date)}
           className="bg-whiteTransparent py-3 px-5 self-center m-3 transition rounded-xl enabled:hover:text-white enabled:hover:bg-blue-800 enabled:active:rounded enabled:active:bg-blue-900 disabled:opacity-60"

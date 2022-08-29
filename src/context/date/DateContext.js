@@ -6,6 +6,8 @@ const DateContext = createContext();
 export const DateProvider = ({ children }) => {
   const initialState = {
     date: '',
+    today: '',
+    formatedFirstAPODDate: '1995-06-20',
   };
 
   const [state, dispatch] = useReducer(dateReducer, initialState);

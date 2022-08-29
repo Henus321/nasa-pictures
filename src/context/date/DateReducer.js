@@ -5,6 +5,11 @@ const dateReducer = (state, action) => {
         ...state,
         date: action.payload,
       };
+    case 'GET_TODAY':
+      return {
+        ...state,
+        today: action.payload,
+      };
     case 'INCREMENT_DATE':
       return {
         ...state,
