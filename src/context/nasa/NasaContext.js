@@ -6,6 +6,7 @@ const NasaContext = createContext();
 export const NasaProvider = ({ children }) => {
   const initialState = {
     pictureOfTheDay: {},
+    isLoading: false,
   };
 
   const [state, dispatch] = useReducer(nasaReducer, initialState);
