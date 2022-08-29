@@ -4,7 +4,7 @@ import Control from '../components/control/Control';
 
 const Home = () => {
   return (
-    <div className="container flex flex-col mx-auto">
+    <div className="container flex flex-col font-serif mx-auto">
       <Content />
       <Control />
       <BookmarksList />

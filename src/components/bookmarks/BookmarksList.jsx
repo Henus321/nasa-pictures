@@ -23,7 +23,7 @@ const BookmarksList = () => {
       <button
         className={
           bookmarks.length > 0
-            ? 'my-4 p-1 rounded-lg h-20 bg-white hover:text-white hover:bg-blue-800 active:rounded active:bg-blue-900'
+            ? 'my-4 p-1 rounded-lg h-20 bg-whiteTransparent hover:text-white hover:bg-blue-800 active:rounded active:bg-blue-900'
             : 'my-4 p-1 rounded-lg h-20 bg-white opacity-50 cursor-auto'
         }
         onClick={() => scroll(-100)}
@@ -32,20 +32,20 @@ const BookmarksList = () => {
       </button>
       <div
         ref={containerEl}
-        className="relative flex m-2 py-2 w-full overflow-hidden scroll-smooth"
+        className="relative flex m-2 py-2 w-full bg-white/50 rounded-xl overflow-hidden scroll-smooth"
       >
         {bookmarks.length > 0 ? (
           bookmarks.map((bookmark) => (
             <BookmarksItem bookmark={bookmark} key={uuidv4()} />
           ))
         ) : (
-          <div className="text-white m-auto self-center">No Bookmarks...</div>
+          <div className="m-auto self-center">No Bookmarks...</div>
         )}
       </div>
       <button
         className={
           bookmarks.length > 0
-            ? 'my-4 p-1 rounded-lg h-20 bg-white hover:text-white hover:bg-blue-800 active:rounded active:bg-blue-900'
+            ? 'my-4 p-1 rounded-lg h-20 bg-whiteTransparent hover:text-white hover:bg-blue-800 active:rounded active:bg-blue-900'
             : 'my-4 p-1 rounded-lg h-20 bg-white opacity-50 cursor-auto'
         }
         onClick={() => scroll(100)}

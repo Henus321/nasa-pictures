@@ -1,4 +1,4 @@
-import { useEffect, useContext, useRef } from 'react';
+import { useEffect, useContext } from 'react';
 import { formatDate } from '../../context/date/DateActions';
 import DateContext from '../../context/date/DateContext';
 import NasaContext from '../../context/nasa/NasaContext';
@@ -24,7 +24,7 @@ const Content = () => {
     <div className="container flex flex-col w-full mt-0 lg:mt-4 lg:flex-row">
       <div className="flex flex-col w-full px-4 lg:px-0 lg:w-1/2">
         {pictureOfTheDay ? (
-          <div className="flex flex-col w-full h-full p-4 bg-white rounded-xl">
+          <div className="flex flex-col w-full h-full p-4 bg-whiteTransparent rounded-xl">
             {pictureOfTheDay.media_type === 'video' ? (
               <YouTube
                 className="flex justify-center items-center"

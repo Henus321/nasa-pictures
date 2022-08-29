@@ -19,7 +19,7 @@ const BookmarksItem = ({ bookmark }) => {
     bookmark.media_type === 'video' ? bookmark.thumbnail : bookmark.url;
 
   return (
-    <div className="relative flex flex-col min-w-max mx-2 bg-white rounded-lg">
+    <div className="relative flex flex-col min-w-max mx-2 bg-white rounded-lg opacity-90 hover:opacity-100">
       <button
         className="absolute font-bold top-0 right-0 px-1.5 bg-white rounded hover:text-white hover:bg-blue-800 active:bg-blue-900"
         onClick={deleteBookmark}

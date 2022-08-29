@@ -79,18 +79,18 @@ const Control = () => {
   };
 
   return (
-    <div className="flex flex-col w-full py-3">
+    <div className="flex flex-col w-full my-4">
       <h1 className="text-center text-white text-xl">Pick a date:</h1>
       <div className="flex justify-center">
         <button
           onClick={() => decrementDateHandler(date)}
-          className="bg-white py-3 px-5 self-center m-3 transition rounded-xl enabled:hover:text-white enabled:hover:bg-blue-800 enabled:active:rounded enabled:active:bg-blue-900 disabled:opacity-75"
+          className="bg-whiteTransparent py-3 px-5 self-center m-3 transition rounded-xl enabled:hover:text-white enabled:hover:bg-blue-800 enabled:active:rounded enabled:active:bg-blue-900 disabled:opacity-75"
           disabled={isFirstAPOD()}
         >
           Back
         </button>
         <input
-          className="bg-white py-2 px-4 my-3 mx-4 border-2 rounded-xl"
+          className="bg-whiteTransparent py-2 px-4 my-3 mx-4 rounded-xl hover:bg-white/95"
           type="date"
           onChange={(e) => pickDateHandler(e.target.valueAsDate)}
           min={formatedFirstAPODDate}
@@ -99,14 +99,14 @@ const Control = () => {
         />
         <button
           onClick={() => incrementDateHandler(date)}
-          className="bg-white py-3 px-5 self-center m-3 transition rounded-xl enabled:hover:text-white enabled:hover:bg-blue-800 enabled:active:rounded enabled:active:bg-blue-900 disabled:opacity-50"
+          className="bg-whiteTransparent py-3 px-5 self-center m-3 transition rounded-xl enabled:hover:text-white enabled:hover:bg-blue-800 enabled:active:rounded enabled:active:bg-blue-900 disabled:opacity-50"
           disabled={isCurDayToday()}
         >
           Forth
         </button>
       </div>
       <button
-        className="bg-white py-3 px-5 self-center mt-3 transition rounded-xl hover:text-white hover:bg-blue-800 active:rounded active:bg-blue-900"
+        className="bg-whiteTransparent py-3 px-5 self-center mt-3 transition rounded-xl hover:text-white hover:bg-blue-800 active:rounded active:bg-blue-900"
         onClick={isAPODBookmarked() ? deleteBookmark : addToBookmarksHandler}
       >
         {isAPODBookmarked() ? 'Delete Bookmark' : 'Add to Bookmarks'}
