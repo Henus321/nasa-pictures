@@ -5,20 +5,25 @@ import './index.css';
 import App from './App';
 
 import { DateProvider } from './context/date/DateContext';
-import { NasaProvider } from './context/nasa/NasaContext';
 import { BookmarksProvider } from './context/bookmarks/BookmarksContext';
+import { Provider } from 'react-redux';
+import { setupStore } from './store';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const store = setupStore();
+
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement
+);
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <DateProvider>
-        <NasaProvider>
+    <Provider store={store}>
+      <BrowserRouter>
+        <DateProvider>
           <BookmarksProvider>
             <App />
           </BookmarksProvider>
-        </NasaProvider>
-      </DateProvider>
-    </BrowserRouter>
+        </DateProvider>
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );

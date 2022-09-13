@@ -1,31 +1,28 @@
 import { useEffect, useContext } from 'react';
 import { formatDate } from '../../context/date/DateActions';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { fetchNasa } from './NasaActionCreators';
 import DateContext from '../../context/date/DateContext';
-import NasaContext from '../../context/nasa/NasaContext';
-import { fetchAPOD } from '../../context/nasa/NasaActions';
 import YouTube from 'react-youtube';
 
-import Spinner from '../layout/Spinner';
+import Spinner from '../../components/layout/Spinner';
 
-const Content = () => {
-  const { date } = useContext(DateContext);
-  const {
-    pictureOfTheDay,
-    isLoading,
-    dispatch: dispatchNasa,
-  } = useContext(NasaContext);
+const Nasa = () => {
+  const dispatch = useAppDispatch();
+  // TOO MESSY
+  const { date } = useAppSelector((state) => state.dateReducer);
+  const { pictureOfTheDay, isLoading } = useAppSelector(
+    (state) => state.nasaReducer
+  );
 
-  const formatedDate = date && formatDate(date);
+  // ERROR HANDLE
+
+  // TOO MESSY
+  const formatedDate = date && formatDate(new Date(date));
 
   useEffect(() => {
-    dispatchNasa({ type: 'SET_LOADING' });
-    const setAPODData = async () => {
-      const data = await fetchAPOD(formatedDate);
-
-      dispatchNasa({ type: 'SET_APOD', payload: data });
-    };
-    setAPODData();
-  }, [formatedDate, dispatchNasa]);
+    dispatch(fetchNasa(formatedDate));
+  }, [formatedDate, dispatch]);
 
   return (
     <div className="container flex flex-col w-full mt-0 lg:mt-4 lg:flex-row">
@@ -56,4 +53,4 @@ const Content = () => {
   );
 };
 
-export default Content;
+export default Nasa;

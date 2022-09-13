@@ -1,12 +1,13 @@
 import BookmarksList from '../components/bookmarks/BookmarksList';
-import Content from '../components/content/Content';
-import Control from '../components/control/Control';
+import DateControl from '../features/date/DateControl';
+import Nasa from '../features/nasa/Nasa';
 
 const Home = () => {
   return (
     <div className="container flex flex-col font-serif mx-auto">
-      <Content />
-      <Control />
+      <Nasa />
+      {/* <Content /> */}
+      <DateControl />
       <BookmarksList />
     </div>
   );

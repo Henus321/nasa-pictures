@@ -1,48 +1,51 @@
 import { useContext, useEffect, useState } from 'react';
 import BookmarksContext from '../../context/bookmarks/BookmarksContext';
 import {
-  decrementDate,
+  getTodayDate,
   getCurrentDate,
   incrementDate,
-  formatDate,
-} from '../../context/date/DateActions';
-import DateContext from '../../context/date/DateContext';
+  decrementDate,
+} from '../../features/date/DateSlice';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { formatDate } from '../../helpers/helpers';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import CustomDatePicker from './CustomDatePicker';
-import { useAppSelector } from '../../hooks/redux';
 
-const Control = () => {
-  const [formatedTodayDate, setFormatedTodayDate] = useState('');
-  const {
-    date,
-    today,
-    formatedFirstAPODDate,
-    dispatch: dispatchDate,
-  } = useContext(DateContext);
+const DateControl = () => {
+  const { date, today, formatedFirstAPODDate } = useAppSelector(
+    (state) => state.dateReducer
+  );
   const { pictureOfTheDay } = useAppSelector((state) => state.nasaReducer);
+
+  const dispatch = useAppDispatch();
+
   const { bookmarks, dispatch: dispatchBookmarks } =
     useContext(BookmarksContext);
 
+  const [formatedTodayDate, setFormatedTodayDate] = useState('');
   const formatedDate = date && formatDate(date);
 
   useEffect(() => {
-    const currentDate = getCurrentDate();
+    const currentDate = +new Date();
+    console.log(currentDate);
     if (!today) {
-      dispatchDate({ type: 'GET_TODAY', payload: currentDate });
+      dispatch(getTodayDate(currentDate));
       setFormatedTodayDate(formatDate(currentDate));
     }
-    dispatchDate({ type: 'GET_CURRENT_DATE', payload: currentDate });
-  }, [dispatchDate, today]);
+    dispatch(getCurrentDate(currentDate));
+  }, [today]);
 
   const incrementDateHandler = (curDate) => {
-    const nextDay = incrementDate(curDate);
-    dispatchDate({ type: 'INCREMENT_DATE', payload: nextDay });
+    const date = new Date(curDate);
+    const nextDay = date.setDate(date.getDate() + 1);
+    dispatch(incrementDate(nextDay));
   };
 
   const decrementDateHandler = (curDate) => {
-    const prevDay = decrementDate(curDate);
-    dispatchDate({ type: 'DECREMENT_DATE', payload: prevDay });
+    const date = new Date(curDate);
+    const prevDay = date.setDate(date.getDate() - 1);
+    dispatch(decrementDate(prevDay));
   };
 
   const isCurDayToday = () => formatedTodayDate === formatedDate;
@@ -94,4 +97,4 @@ const Control = () => {
   );
 };
 
-export default Control;
+export default DateControl;
