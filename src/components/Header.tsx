@@ -1,7 +1,8 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png';
 
-const Header = () => {
+const Header: React.FC = () => {
   return (
     <div className="w-full bg-whiteTransparent mb-6">
       <nav className="relative container mx-auto px-4 py-2">

@@ -1,19 +1,19 @@
 import { useEffect, useState } from 'react';
-import { setTodayDate, setCurrentDate } from '../../features/date/DateSlice';
+import { setTodayDate, setCurrentDate } from './DateSlice';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { formatDate } from '../../helpers/helpers';
+import { addToBookmarks, deleteBookmark } from '../bookmarks/BookmarksSlice';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import CustomDatePicker from './CustomDatePicker';
-import { addToBookmarks, deleteBookmark } from '../bookmarks/BookmarksSlice';
 
 const DateControl = () => {
-  // MESS
-  const { date, today, formatedFirstAPODDate } = useAppSelector(
-    (state) => state.dateReducer
+  const { dateReducer, bookmarksReducer, nasaReducer } = useAppSelector(
+    (state) => state
   );
-  const { pictureOfTheDay } = useAppSelector((state) => state.nasaReducer);
-  const { bookmarks } = useAppSelector((state) => state.bookmarksReducer);
+  const { date, today, formatedFirstAPODDate } = dateReducer;
+  const { bookmarks } = bookmarksReducer;
+  const { pictureOfTheDay } = nasaReducer;
 
   const dispatch = useAppDispatch();
 
@@ -29,13 +29,13 @@ const DateControl = () => {
     dispatch(setCurrentDate(currentDate));
   }, [today, dispatch]);
 
-  const incrementDateHandler = (curDate) => {
+  const incrementDateHandler = (curDate: number) => {
     const date = new Date(curDate);
     const nextDay = date.setDate(date.getDate() + 1);
     dispatch(setCurrentDate(nextDay));
   };
 
-  const decrementDateHandler = (curDate) => {
+  const decrementDateHandler = (curDate: number) => {
     const date = new Date(curDate);
     const prevDay = date.setDate(date.getDate() - 1);
     dispatch(setCurrentDate(prevDay));

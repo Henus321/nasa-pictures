@@ -1,21 +1,21 @@
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 import BookmarksItem from './BookmarksItem';
-import { v4 as uuidv4 } from 'uuid';
 import { FaChevronRight } from 'react-icons/fa';
 import { FaChevronLeft } from 'react-icons/fa';
 import { useAppSelector } from '../../hooks/redux';
 
-const BookmarksList = () => {
+const BookmarksList: React.FC = () => {
   const { bookmarks } = useAppSelector((state) => state.bookmarksReducer);
-  const containerEl = useRef();
+  const containerEl = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    localStorage.setItem('bookmarks', JSON.stringify(bookmarks), [bookmarks]);
+    localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
   });
 
-  const scroll = (scrollOffset) => {
-    containerEl.current.scrollLeft += scrollOffset;
+  const scroll = (scrollOffset: number) => {
+    containerEl.current!.scrollLeft += scrollOffset;
   };
 
   return (

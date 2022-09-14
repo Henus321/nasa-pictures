@@ -1,20 +1,26 @@
-import { setCurrentDate } from '../../features/date/DateSlice';
+import React from 'react';
+import { setCurrentDate } from '../date/DateSlice';
 import { deleteBookmark } from './BookmarksSlice';
 import { useAppDispatch } from '../../hooks/redux';
+import { INasa } from '../../models/INasa';
 
-const BookmarksItem = ({ bookmark }) => {
+interface BookmarksItemProps {
+  bookmark: INasa;
+}
+
+const BookmarksItem: React.FC<BookmarksItemProps> = ({ bookmark }) => {
   const dispatch = useAppDispatch();
 
   const deleteBookmarkHandler = () => {
     dispatch(deleteBookmark(bookmark));
   };
 
-  const onBookmarkClick = (bookmark) => {
+  const onBookmarkClick = (bookmark: INasa) => {
     const date = +new Date(bookmark.date);
     dispatch(setCurrentDate(date));
   };
 
-  const chooseThumbnail = (bookmark) =>
+  const chooseThumbnail = (bookmark: INasa) =>
     bookmark.media_type === 'video' ? bookmark.thumbnail : bookmark.url;
 
   return (
@@ -28,7 +34,7 @@ const BookmarksItem = ({ bookmark }) => {
       <img
         className="w-20 h-20 object-cover p-2 cursor-pointer"
         src={chooseThumbnail(bookmark)}
-        alt={bookmark.date}
+        alt={'' + bookmark.date}
         onClick={() => onBookmarkClick(bookmark)}
       />
     </div>

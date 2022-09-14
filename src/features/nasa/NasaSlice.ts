@@ -13,6 +13,7 @@ const initialItem: INasa = {
   url: '',
   title: '',
   explanation: '',
+  date: '',
   thumbnail: '',
 };
 

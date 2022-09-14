@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IBookmark } from '../../models/IBookmark';
+import { INasa } from '../../models/INasa';
 
 interface BookmarksState {
-  bookmarks: IBookmark[];
+  bookmarks: INasa[];
 }
 
 const getInitialState = () => {
@@ -18,13 +18,13 @@ export const bookmarksSlice = createSlice({
   name: '@@bookmarks',
   initialState,
   reducers: {
-    addToBookmarks: (state, action: PayloadAction<IBookmark>) => {
+    addToBookmarks: (state, action: PayloadAction<INasa>) => {
       state.bookmarks = [...state.bookmarks, action.payload];
     },
-    deleteBookmark: (state, action: PayloadAction<IBookmark>) => {
+    deleteBookmark: (state, action: PayloadAction<INasa>) => {
       state.bookmarks = [
         ...state.bookmarks.filter(
-          (item: IBookmark) => item.date !== action.payload.date
+          (item: INasa) => item.date !== action.payload.date
         ),
       ];
     },

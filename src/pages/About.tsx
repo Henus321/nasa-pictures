@@ -1,11 +1,12 @@
 const About = () => {
   return (
-    <div className="container flex w-100 min-h-screen flex-col my-4 mx-auto px-4">
-      <div className=" bg-whiteTransparent px-3 py-3 rounded-xl md:px-8 md:my-8 md:py-4">
+    <div className="container flex w-100 flex-col my-4 mx-auto px-4">
+      <div className="min-h-[50vh] bg-whiteTransparent px-3 pt-3 pb-6 rounded-xl md:px-8 md:my-8 md:pt-4 md:pb-8">
         <h2 className="text-3xl text-center font-bold mb-1">About</h2>
         <p className="text-justify">
           A long time ago in a galaxy far, far away... i created this project to
-          practice Tailwindcss. Lorem ipsum dolor sit amet consectetur,
+          practice Tailwindcss. Later I realized that I also needed to practice
+          Redux Toolkit and TypeScript. Lorem ipsum dolor sit amet consectetur,
           adipisicing elit. Ipsam quo veritatis reiciendis, perferendis
           necessitatibus, consequatur rem provident adipisci minima rerum
           corporis quod labore assumenda obcaecati animi mollitia accusamus,

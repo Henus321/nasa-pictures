@@ -1,14 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface DateState {
-  date: string;
-  today: string;
+  date: number;
+  today: number;
   formatedFirstAPODDate: string;
 }
 
 const initialState: DateState = {
-  date: '',
-  today: '',
+  date: 0,
+  today: 0,
   formatedFirstAPODDate: '1995-06-20',
 };
 
@@ -16,10 +16,10 @@ export const dateSlice = createSlice({
   name: '@@date',
   initialState,
   reducers: {
-    setTodayDate(state, action: PayloadAction<string>) {
+    setTodayDate(state, action: PayloadAction<number>) {
       state.today = action.payload;
     },
-    setCurrentDate(state, action: PayloadAction<string>) {
+    setCurrentDate(state, action: PayloadAction<number>) {
       state.date = action.payload;
     },
   },

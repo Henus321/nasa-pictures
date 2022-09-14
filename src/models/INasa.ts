@@ -4,5 +4,6 @@ export interface INasa {
   url: string;
   title: string;
   explanation: string;
+  date: string;
   thumbnail?: string;
 }

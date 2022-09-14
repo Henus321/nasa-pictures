@@ -1,4 +1,6 @@
-export const formatDate = (timestamp: any) => {
+import { INasa } from '../models/INasa';
+
+export const formatDate = (timestamp: number) => {
   const date = new Date(timestamp);
 
   const month = date.getUTCMonth() + 1;
@@ -10,7 +12,7 @@ export const formatDate = (timestamp: any) => {
   }`;
 };
 
-export const convertVideoIdString = (pictureOfTheDay: any) => {
+export const convertVideoIdString = (pictureOfTheDay: INasa) => {
   if (!pictureOfTheDay) return;
   return pictureOfTheDay.url
     .split('/')
