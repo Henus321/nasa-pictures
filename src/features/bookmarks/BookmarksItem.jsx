@@ -10,7 +10,7 @@ const BookmarksItem = ({ bookmark }) => {
   };
 
   const onBookmarkClick = (bookmark) => {
-    const date = new Date(bookmark.date);
+    const date = +new Date(bookmark.date);
     dispatch(setDate(date));
   };
 

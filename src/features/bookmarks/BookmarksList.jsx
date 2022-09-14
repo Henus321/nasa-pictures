@@ -18,8 +18,6 @@ const BookmarksList = () => {
     containerEl.current.scrollLeft += scrollOffset;
   };
 
-  console.log(bookmarks);
-
   return (
     <div className="relative container flex mb-10 px-4 lg:px-0">
       <button

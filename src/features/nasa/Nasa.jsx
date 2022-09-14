@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { fetchNasa } from './NasaActionCreators';
 import YouTube from 'react-youtube';
 
-import Spinner from '../../components/layout/Spinner';
+import Spinner from '../../components/Spinner';
 
 const Nasa = () => {
   const dispatch = useAppDispatch();
