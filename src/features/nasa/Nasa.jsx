@@ -1,23 +1,17 @@
-import { useEffect, useContext } from 'react';
-import { formatDate } from '../../context/date/DateActions';
+import { useEffect } from 'react';
+import { formatDate } from '../../helpers/helpers';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { fetchNasa } from './NasaActionCreators';
-import DateContext from '../../context/date/DateContext';
 import YouTube from 'react-youtube';
 
 import Spinner from '../../components/layout/Spinner';
 
 const Nasa = () => {
   const dispatch = useAppDispatch();
-  // TOO MESSY
-  const { date } = useAppSelector((state) => state.dateReducer);
-  const { pictureOfTheDay, isLoading } = useAppSelector(
-    (state) => state.nasaReducer
-  );
+  const { dateReducer, nasaReducer } = useAppSelector((state) => state);
+  const { date } = dateReducer;
+  const { pictureOfTheDay, isLoading } = nasaReducer;
 
-  // ERROR HANDLE
-
-  // TOO MESSY
   const formatedDate = date && formatDate(new Date(date));
 
   useEffect(() => {

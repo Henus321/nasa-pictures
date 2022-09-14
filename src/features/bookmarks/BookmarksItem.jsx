@@ -1,18 +1,17 @@
-import { useContext } from 'react';
-import BookmarksContext from '../../context/bookmarks/BookmarksContext';
-import DateContext from '../../context/date/DateContext';
+import { setDate } from '../../features/date/DateSlice';
+import { deleteBookmark } from './BookmarksSlice';
+import { useAppDispatch } from '../../hooks/redux';
 
 const BookmarksItem = ({ bookmark }) => {
-  const { dispatch: dispatchBookmark } = useContext(BookmarksContext);
-  const { dispatch: dispatchDate } = useContext(DateContext);
+  const dispatch = useAppDispatch();
 
-  const deleteBookmark = () => {
-    dispatchBookmark({ type: 'DELETE_BOOKMARK', payload: bookmark });
+  const deleteBookmarkHandler = () => {
+    dispatch(deleteBookmark(bookmark));
   };
 
   const onBookmarkClick = (bookmark) => {
     const date = new Date(bookmark.date);
-    dispatchDate({ type: 'SET_DATE', payload: date });
+    dispatch(setDate(date));
   };
 
   const chooseThumbnail = (bookmark) =>
@@ -22,7 +21,7 @@ const BookmarksItem = ({ bookmark }) => {
     <div className="relative flex flex-col min-w-max mx-2 bg-white rounded-lg opacity-90 hover:opacity-100">
       <button
         className="absolute font-bold top-0 right-0 px-1.5 bg-white rounded hover:text-white hover:bg-blue-800 active:bg-blue-900"
-        onClick={deleteBookmark}
+        onClick={deleteBookmarkHandler}
       >
         x
       </button>

@@ -1,13 +1,13 @@
-import { useContext, useEffect, useRef } from 'react';
-import BookmarksContext from '../../context/bookmarks/BookmarksContext';
+import { useEffect, useRef } from 'react';
 
 import BookmarksItem from './BookmarksItem';
 import { v4 as uuidv4 } from 'uuid';
 import { FaChevronRight } from 'react-icons/fa';
 import { FaChevronLeft } from 'react-icons/fa';
+import { useAppSelector } from '../../hooks/redux';
 
 const BookmarksList = () => {
-  const { bookmarks } = useContext(BookmarksContext);
+  const { bookmarks } = useAppSelector((state) => state.bookmarksReducer);
   const containerEl = useRef();
 
   useEffect(() => {
@@ -17,6 +17,8 @@ const BookmarksList = () => {
   const scroll = (scrollOffset) => {
     containerEl.current.scrollLeft += scrollOffset;
   };
+
+  console.log(bookmarks);
 
   return (
     <div className="relative container flex mb-10 px-4 lg:px-0">

@@ -42,4 +42,4 @@ export const nasaSlice = createSlice({
   },
 });
 
-export default nasaSlice.reducer;
+export const nasaReducer = nasaSlice.reducer;

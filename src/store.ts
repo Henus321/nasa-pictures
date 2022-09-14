@@ -1,10 +1,12 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import nasaReducer from './features/nasa/NasaSlice';
+import { nasaReducer } from './features/nasa/NasaSlice';
 import { dateReducer } from './features/date/DateSlice';
+import { bookmarksReducer } from './features/bookmarks/BookmarksSlice';
 
 const rootReducer = combineReducers({
   nasaReducer,
   dateReducer,
+  bookmarksReducer,
 });
 
 export const setupStore = () => {

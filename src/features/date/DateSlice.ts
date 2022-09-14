@@ -28,10 +28,22 @@ export const dateSlice = createSlice({
     decrementDate(state, action: PayloadAction<string>) {
       state.date = action.payload;
     },
+    pickDate(state, action: PayloadAction<string>) {
+      state.date = action.payload;
+    },
+    setDate(state, action: PayloadAction<string>) {
+      state.date = action.payload;
+    },
   },
 });
 
-export const { getTodayDate, getCurrentDate, incrementDate, decrementDate } =
-  dateSlice.actions;
+export const {
+  getTodayDate,
+  getCurrentDate,
+  incrementDate,
+  decrementDate,
+  pickDate,
+  setDate,
+} = dateSlice.actions;
 
 export const dateReducer = dateSlice.reducer;
