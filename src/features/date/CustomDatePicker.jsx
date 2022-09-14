@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import { pickDate } from './DateSlice';
+import { setCurrentDate } from './DateSlice';
 import DatePicker from 'react-datepicker';
 
 const CustomDatePicker = memo(() => {
@@ -23,7 +23,7 @@ const CustomDatePicker = memo(() => {
   const pickDateHandler = (inputPick) => {
     if (!inputPick) return;
     const date = +new Date(inputPick);
-    dispatch(pickDate(date));
+    dispatch(setCurrentDate(date));
   };
 
   return (

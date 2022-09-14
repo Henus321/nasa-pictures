@@ -16,34 +16,15 @@ export const dateSlice = createSlice({
   name: '@@date',
   initialState,
   reducers: {
-    getTodayDate(state, action: PayloadAction<string>) {
+    setTodayDate(state, action: PayloadAction<string>) {
       state.today = action.payload;
     },
-    getCurrentDate(state, action: PayloadAction<string>) {
-      state.date = action.payload;
-    },
-    incrementDate(state, action: PayloadAction<string>) {
-      state.date = action.payload;
-    },
-    decrementDate(state, action: PayloadAction<string>) {
-      state.date = action.payload;
-    },
-    pickDate(state, action: PayloadAction<string>) {
-      state.date = action.payload;
-    },
-    setDate(state, action: PayloadAction<string>) {
+    setCurrentDate(state, action: PayloadAction<string>) {
       state.date = action.payload;
     },
   },
 });
 
-export const {
-  getTodayDate,
-  getCurrentDate,
-  incrementDate,
-  decrementDate,
-  pickDate,
-  setDate,
-} = dateSlice.actions;
+export const { setTodayDate, setCurrentDate } = dateSlice.actions;
 
 export const dateReducer = dateSlice.reducer;

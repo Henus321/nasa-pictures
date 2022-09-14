@@ -1,4 +1,4 @@
-import { setDate } from '../../features/date/DateSlice';
+import { setCurrentDate } from '../../features/date/DateSlice';
 import { deleteBookmark } from './BookmarksSlice';
 import { useAppDispatch } from '../../hooks/redux';
 
@@ -11,7 +11,7 @@ const BookmarksItem = ({ bookmark }) => {
 
   const onBookmarkClick = (bookmark) => {
     const date = +new Date(bookmark.date);
-    dispatch(setDate(date));
+    dispatch(setCurrentDate(date));
   };
 
   const chooseThumbnail = (bookmark) =>

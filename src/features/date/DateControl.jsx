@@ -1,10 +1,5 @@
 import { useEffect, useState } from 'react';
-import {
-  getTodayDate,
-  getCurrentDate,
-  incrementDate,
-  decrementDate,
-} from '../../features/date/DateSlice';
+import { setTodayDate, setCurrentDate } from '../../features/date/DateSlice';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { formatDate } from '../../helpers/helpers';
 
@@ -28,22 +23,22 @@ const DateControl = () => {
   useEffect(() => {
     const currentDate = +new Date();
     if (!today) {
-      dispatch(getTodayDate(currentDate));
+      dispatch(setTodayDate(currentDate));
       setFormatedTodayDate(formatDate(currentDate));
     }
-    dispatch(getCurrentDate(currentDate));
+    dispatch(setCurrentDate(currentDate));
   }, [today, dispatch]);
 
   const incrementDateHandler = (curDate) => {
     const date = new Date(curDate);
     const nextDay = date.setDate(date.getDate() + 1);
-    dispatch(incrementDate(nextDay));
+    dispatch(setCurrentDate(nextDay));
   };
 
   const decrementDateHandler = (curDate) => {
     const date = new Date(curDate);
     const prevDay = date.setDate(date.getDate() - 1);
-    dispatch(decrementDate(prevDay));
+    dispatch(setCurrentDate(prevDay));
   };
 
   const isCurDayToday = () => formatedTodayDate === formatedDate;

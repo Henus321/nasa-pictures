@@ -10,7 +10,7 @@ const Nasa = () => {
   const dispatch = useAppDispatch();
   const { dateReducer, nasaReducer } = useAppSelector((state) => state);
   const { date } = dateReducer;
-  const { pictureOfTheDay, isLoading } = nasaReducer;
+  const { pictureOfTheDay, isLoading, error } = nasaReducer;
 
   const formatedDate = date && formatDate(new Date(date));
 
@@ -20,9 +20,15 @@ const Nasa = () => {
 
   return (
     <div className="container flex flex-col w-full mt-0 lg:mt-4 lg:flex-row">
-      <div className="flex flex-col w-full px-4 lg:px-0 lg:w-1/2">
-        {pictureOfTheDay &&
-          (!isLoading ? (
+      {isLoading && <Spinner />}
+      {error && (
+        <div className="flex justify-center items-center mx-auto p-6 w-5/6 min-h-[40vh] bg-white/50 rounded-xl">
+          <h2 className="text-black">{error}</h2>
+        </div>
+      )}
+      {!isLoading && !error && pictureOfTheDay && (
+        <>
+          <div className="flex flex-col w-full px-4 lg:px-0 lg:w-1/2">
             <div className="flex flex-col w-full h-full p-4 bg-whiteTransparent rounded-xl">
               {pictureOfTheDay.media_type === 'video' ? (
                 <YouTube
@@ -33,16 +39,17 @@ const Nasa = () => {
                 <img src={pictureOfTheDay.url} alt={pictureOfTheDay.title} />
               )}
             </div>
-          ) : (
-            <Spinner />
-          ))}
-      </div>
-      <div className="relative flex flex-col w-full text-white overflow-auto rounded-2xl lg:w-1/2">
-        <div className=" py-4 px-6 text-justify lg:absolute">
-          <h2 className="text-2xl font-semibold">{pictureOfTheDay.title}</h2>
-          <p>{pictureOfTheDay.explanation}</p>
-        </div>
-      </div>
+          </div>
+          <div className="relative flex flex-col w-full text-white overflow-auto rounded-2xl lg:w-1/2">
+            <div className=" py-4 px-6 text-justify lg:absolute">
+              <h2 className="text-2xl font-semibold">
+                {pictureOfTheDay.title}
+              </h2>
+              <p>{pictureOfTheDay.explanation}</p>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 };
