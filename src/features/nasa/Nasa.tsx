@@ -13,7 +13,7 @@ const Nasa: React.FC = () => {
 
   const dispatch = useAppDispatch();
 
-  const formatedDate = date && +formatDate(date);
+  const formatedDate = date && formatDate(date);
 
   useEffect(() => {
     if (formatedDate) dispatch(fetchNasa(formatedDate));

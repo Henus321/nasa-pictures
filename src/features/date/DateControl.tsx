@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { setTodayDate, setCurrentDate } from './DateSlice';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { formatDate } from '../../helpers/helpers';
@@ -7,7 +7,7 @@ import { addToBookmarks, deleteBookmark } from '../bookmarks/BookmarksSlice';
 import 'react-datepicker/dist/react-datepicker.css';
 import CustomDatePicker from './CustomDatePicker';
 
-const DateControl = () => {
+const DateControl: React.FC = () => {
   const { dateReducer, bookmarksReducer, nasaReducer } = useAppSelector(
     (state) => state
   );
