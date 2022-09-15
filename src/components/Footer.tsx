@@ -1,7 +1,8 @@
+import React from 'react';
 import { FaGithub, FaInstagram, FaYoutube } from 'react-icons/fa';
 import logo from '../assets/logo.png';
 
-const Footer = () => {
+const Footer: React.FC = () => {
   return (
     <div className="w-full flex flex-col text-center bg-whiteTransparent">
       <div className="container flex flex-col w-full justify-around items-center p-8 mt-4 mx-auto md:space-y-4 md:flex-row">
