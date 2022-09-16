@@ -16,10 +16,10 @@ export const dateSlice = createSlice({
   name: '@@date',
   initialState,
   reducers: {
-    setTodayDate(state, action: PayloadAction<number>) {
+    setTodayDate(state: DateState, action: PayloadAction<number>) {
       state.today = action.payload;
     },
-    setCurrentDate(state, action: PayloadAction<number>) {
+    setCurrentDate(state: DateState, action: PayloadAction<number>) {
       state.date = action.payload;
     },
   },

@@ -18,14 +18,12 @@ export const bookmarksSlice = createSlice({
   name: '@@bookmarks',
   initialState,
   reducers: {
-    addToBookmarks: (state, action: PayloadAction<INasa>) => {
+    addToBookmarks: (state: BookmarksState, action: PayloadAction<INasa>) => {
       state.bookmarks = [...state.bookmarks, action.payload];
     },
-    deleteBookmark: (state, action: PayloadAction<INasa>) => {
+    deleteBookmark: (state: BookmarksState, action: PayloadAction<INasa>) => {
       state.bookmarks = [
-        ...state.bookmarks.filter(
-          (item: INasa) => item.date !== action.payload.date
-        ),
+        ...state.bookmarks.filter((item) => item.date !== action.payload.date),
       ];
     },
   },
