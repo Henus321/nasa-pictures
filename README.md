@@ -10,7 +10,6 @@ Use datepicker or buttons to browse previous pictures of the day. You can also a
 - TypeScript
 - React
 - Redux/Redux toolkit
-- React Router Dom
 - TailwindCSS
 
 ### APIs:
