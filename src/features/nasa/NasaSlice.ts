@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { INasa } from '../../models/INasa';
+import { fetchNasa } from './NasaActionCreators';
 
 interface NasaState {
   pictureOfTheDay: INasa;
@@ -26,16 +27,17 @@ const initialState: NasaState = {
 export const nasaSlice = createSlice({
   name: '@@nasa',
   initialState,
-  reducers: {
-    nasaFetching(state: NasaState) {
+  reducers: {},
+  extraReducers: {
+    [fetchNasa.pending.type]: (state) => {
       state.isLoading = true;
     },
-    nasaFetchingSuccess(state: NasaState, action: PayloadAction<INasa>) {
+    [fetchNasa.fulfilled.type]: (state, action: PayloadAction<INasa>) => {
       state.isLoading = false;
       state.error = '';
       state.pictureOfTheDay = action.payload;
     },
-    nasaFetchingError(state: NasaState, action: PayloadAction<string>) {
+    [fetchNasa.rejected.type]: (state, action: PayloadAction<string>) => {
       state.isLoading = false;
       state.error = action.payload;
       state.pictureOfTheDay = initialItem;

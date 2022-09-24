@@ -1,15 +1,15 @@
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { convertVideoIdString } from '../../helpers/helpers';
 import { INasa } from '../../models/INasa';
-import { AppDispatch } from '../../store';
-import { nasaSlice } from './NasaSlice';
 
-export const fetchNasa =
-  (formatedDate: string) => async (dispatch: AppDispatch) => {
-    const API_URL = 'https://api.nasa.gov/planetary/apod?api_key=';
-    const API_KEY = process.env.REACT_APP_NASA_API_KEY;
+const API_URL = 'https://api.nasa.gov/planetary/apod?api_key=';
+const API_KEY = process.env.REACT_APP_NASA_API_KEY;
+
+export const fetchNasa = createAsyncThunk(
+  '@@nasa/fetchNasa',
+  async (formatedDate: string, thunkAPI) => {
     try {
-      dispatch(nasaSlice.actions.nasaFetching());
       const response = await axios.get<INasa>(
         `${API_URL}${API_KEY}&date=${formatedDate}`
       );
@@ -21,8 +21,9 @@ export const fetchNasa =
         if (vidId) data.videoId = vidId;
       }
 
-      dispatch(nasaSlice.actions.nasaFetchingSuccess(data));
+      return data;
     } catch (error: any) {
-      dispatch(nasaSlice.actions.nasaFetchingError(error.message));
+      return thunkAPI.rejectWithValue(error.message);
     }
-  };
+  }
+);
