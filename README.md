@@ -15,5 +15,3 @@ Use datepicker or buttons to browse previous pictures of the day. You can also a
 ### APIs:
 
 - [NASA Open APIs](https://api.nasa.gov/)
-
-This project deployed on netlify: [hen-nasapictures.netlify.app/](https://hen-nasapictures.netlify.app/)
